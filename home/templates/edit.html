@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+
+{% block start %}
+
+
+<div class="container mt-5">
+    <form class="col-6 mx-auto p-3 card shadow-lg" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h1>Edit user details </h1>
+      <hr>
+        <div class="form-group ">
+          <label>New Name</label>
+          <input type="text" name="name" value={{data.name}} class="form-control"  placeholder="Enter New Name" required>
+        </div>
+
+        <div class="form-group">
+        <label class="form-check-label" >New Mobile No</label>
+          <input type="number" name="number" value={{data.phone_number}} class="form-control" placeholder="Enter New Mobile No" required>
+          
+          <button type="submit" class="btn btn-success col-6 m-4 ">Submit</button>
+      </form>
+    </div>
+
+
+{% endblock %}

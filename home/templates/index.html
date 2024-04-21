@@ -1,0 +1,58 @@
+
+
+{% extends "base.html" %}
+{% block start %}
+
+
+<h1>this is Index Page</h1>
+
+{% comment %} {{peoples}} {% endcomment %}
+
+<table class="table container">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">branch</th>
+        <th scope="col">Roll No</th>
+        <th scope="col">Random No</th>
+
+        <th scope="col">Vote or Not</th>
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for x in data %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{x.name}}</td>
+            <td>{{x.age}}</td>
+            <td>{{x.branch}}</td>
+
+            <td>{{x.roll_no}}</td>
+            <td>{{x.random_count}}</td>
+
+
+
+            <td >
+                {% if x.Age <= 18 %}
+                Not Vote
+                {% else %}
+                Vote
+                {% endif %}
+            </td>
+            
+            
+          </tr>
+        {% endfor %}
+     
+    </tbody>
+  </table>
+
+{% endblock %}
+
+
+     

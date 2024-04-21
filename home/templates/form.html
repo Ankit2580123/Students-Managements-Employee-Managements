@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block start %}
+
+
+{% for message in messages  %}
+<div class="alert alert-{{message.tags}} mb-0 alert-dismissible fade show" role="alert">
+  <strong>Message:</strong> {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+<div class="container mt-5">
+<form class="col-6 mx-auto p-3 card shadow-lg"  method="POST" enctype="multipart/form-data">
+  
+  <h1>Enter Your Details </h1>
+  <hr>
+  {% csrf_token %}
+    <div class="form-group ">
+      <label>Name</label>
+      <input type="text" name="name" class="form-control"  placeholder="Enter Name" required>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+    </div>
+    <div class="form-group">
+    <label class="form-check-label" >Mobile No</label>
+      <input type="number" name="number" class="form-control" placeholder="Enter Mobile No" required>
+    <div class="from-group">
+      <label class="form-check-label" >Photo</label>
+      <input type="file" name="photo" class="form-control" required >
+    </div>
+    <button type="submit" class="btn btn-success col-6 m-4 ">Submit</button>
+  </form>
+</div>
+
+
+<div class="form-group mt-3 ">
+
+
+
+
+  <form class="col-6 mx-auto p-3 card shadow-lg" enctype="multipart/form-data">
+    <label>Search Users</label>
+    <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success mt-3" type="submit">Search</button>
+    </form>
+</div>
+
+
+<table class="table table-striped mt-2">
+  <thead>
+    <h2>  Students Detials </h2>
+    <hr>
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone_no</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Operation</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+  
+     
+
+{% comment %}    
+    {% for details in data  %}
+
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{details.name}}</td>
+      <td>{{details.email}}</td>
+      <td>{{details.phone_number}}</td>
+      <td>
+      <img src="/media/{{details.photo}}" style="height:80px; width:80px;">
+      </td>
+      <td>
+        <a href="/edit/{{details.id}}" class="btn btn-success">Edit</a>
+        <a href="/delete_details/{{details.id}}" class="btn btn-danger">Delete</a>
+      </td>
+
+      
+      
+    </tr>
+   
+
+    {% endfor %} {% endcomment %}
+   
+    
+  </tbody>
+</table>
+
+{% endblock %}
+
