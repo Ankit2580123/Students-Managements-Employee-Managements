@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from home.models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate ,login,logout
+from django.conf import settings
+from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
@@ -129,6 +131,11 @@ def register(request):
 
         user.set_password(password)  #use for encrypt the password
         user.save()
+        subject = 'welcome to techno fitness'
+        message = f'Hi {user.username}, thank you for registering in Techno fitness.'
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list =[user.email, ]
+        send_mail( subject, message, email_from, recipient_list) 
         messages.success(request,"Successfully Registered")
         return redirect('/login')
             

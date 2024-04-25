@@ -33,6 +33,8 @@ class Students_Profile(models.Model):
     phone_number = models.CharField(max_length=20, help_text='Enter phone number')
     photo=models.ImageField(upload_to="Images")
 
+    
+
 
 
 
